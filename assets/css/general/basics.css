@@ -1,5 +1,5 @@
 :root {
-    --brand-color: #ff572f;
+    --brand-color: #4a90e2;
     --primary-text-color: #333;
     --secondary-text-color: #999;
     --white-color: #fff;
@@ -16,7 +16,14 @@
     --twitter-color: #1da1f2;
     --rss-color: #f26522;
     --animation-base: ease-in-out;
-    --font-base: muli, -apple-system, blinkmacsystemfont, segoe ui, helvetica, arial, sans-serif;
+    --font-base:
+        muli,
+        -apple-system,
+        blinkmacsystemfont,
+        segoe ui,
+        helvetica,
+        arial,
+        sans-serif;
     --navbar-height: 80px;
 }
 
@@ -177,13 +184,6 @@ table:not(.highlight) {
     border-collapse: collapse;
     font-size: 1.5rem;
     word-break: normal;
-}
-
-table:not(.highlight):not(.table) {
-    display: inline-block;
-    overflow-x: auto;
-    white-space: nowrap;
-    -webkit-overflow-scrolling: touch;
 }
 
 table:not(.highlight) thead {

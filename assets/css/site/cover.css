@@ -1,15 +1,39 @@
 .cover {
-    margin-top: 4.5rem;
+    /* margin-top: 4.5rem; */
+    background: var(--lighter-gray-color);
 }
 
 .cover-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 0 auto;
-    max-width: 500px;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+    padding: 5vmin 6vmin 6vmin;
     text-align: center;
+    background: var(--white-color);
+    box-shadow:
+        0 0 1px rgba(0, 0, 0, 0.04),
+        0 0 5px rgba(0, 0, 0, 0.02),
+        0 5px 12px -8px rgba(0, 0, 0, 0.08),
+        0 12.8px 3.7px -41px rgba(0, 0, 0, 0.1),
+        0 15.8px 9.3px -41px rgba(0, 0, 0, 0.1),
+        0 17.4px 19px -41px rgba(0, 0, 0, 0.1),
+        0 19.4px 39.1px -41px rgba(0, 0, 0, 0.1),
+        0 35px 107px -41px rgba(0, 0, 0, 0.1);
 }
+
+.cover-content .single-title {
+    margin-bottom: 1rem;
+    font-size: 5rem;
+}
+
+/* .cover-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  padding: 10rem 0;
+  max-width: 500px;
+  text-align: center;
+} */
 
 .cover-icon {
     position: relative;
@@ -28,11 +52,15 @@
 }
 
 .cover-description {
-    font-size: 1.7rem;
+    margin: auto;
+    max-width: 570px;
+    font-size: 1.9rem;
+    font-style: italic;
 }
 
 .cover-cta {
     display: flex;
+    justify-content: center;
     margin-top: 2rem;
 }
 
