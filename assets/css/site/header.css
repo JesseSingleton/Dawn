@@ -29,11 +29,6 @@
 
 .logo-text {
     margin-right: 0.5rem;
-
-    /* color: var(--secondary-text-color);
-    font-size: 1.8rem;
-    font-weight: 800;
-    padding: 10px; */
     color: var(--darker-grey-color);
     font-size: 1.8rem;
     line-height: 1em;
