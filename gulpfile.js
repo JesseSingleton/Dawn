@@ -30,75 +30,63 @@ function handleError(done) {
 }
 
 function hbs(done) {
-    pump(
-        [src(['*.hbs', 'partials/**/*.hbs', 'members/**/*.hbs']), livereload()],
-        handleError(done)
-    );
+    pump([
+        src(['*.hbs', 'partials/**/*.hbs', 'members/**/*.hbs']),
+        livereload()
+    ], handleError(done));
 }
 
 function css(done) {
-    pump(
-        [
-            src('assets/css/screen.css', { sourcemaps: true }),
-            postcss([easyimport, autoprefixer(), cssnano()]),
-            dest('assets/built/', { sourcemaps: '.' }),
-            livereload(),
-        ],
-        handleError(done)
-    );
+    pump([
+        src('assets/css/screen.css', { sourcemaps: true }),
+        postcss([easyimport, autoprefixer(), cssnano()]),
+        dest('assets/built/', { sourcemaps: '.' }),
+        livereload(),
+    ], handleError(done));
 }
 
 function js(done) {
-    pump(
-        [
-            src(['assets/js/lib/*.js', 'assets/js/main.js'], {
-                sourcemaps: true,
-            }),
-            concat('main.min.js'),
-            uglify(),
-            dest('assets/built/', { sourcemaps: '.' }),
-            livereload(),
-        ],
-        handleError(done)
-    );
+    pump([
+        src([
+            'assets/js/lib/*.js',
+            'assets/js/main.js'],
+            { sourcemaps: true }),
+        concat('main.min.js'),
+        uglify(),
+        dest('assets/built/', { sourcemaps: '.' }),
+        livereload(),
+    ], handleError(done));
 }
 
 function lint(done) {
-    pump(
-        [
-            src(['assets/css/**/*.css', '!assets/css/vendor/*']),
-            gulpStylelint({
-                fix: true,
-                reporters: [{ formatter: 'string', console: true }],
-            }),
-            dest('assets/css/'),
-        ],
-        handleError(done)
-    );
+    pump([
+        src(['assets/css/**/*.css', '!assets/css/vendor/*']),
+        gulpStylelint({
+            fix: true,
+            reporters: [{ formatter: 'string', console: true }],
+        }),
+        dest('assets/css/'),
+    ], handleError(done));
 }
 
 function zipper(done) {
     const filename = require('./package.json').name + '.zip';
 
-    pump(
-        [
-            src([
-                '**',
-                '!node_modules',
-                '!node_modules/**',
-                '!dist',
-                '!dist/**',
-                '!yarn-error.log',
-            ]),
-            zip(filename),
-            dest('dist/'),
-        ],
-        handleError(done)
-    );
+    pump([
+        src([
+            '**',
+            '!node_modules',
+            '!node_modules/**',
+            '!dist',
+            '!dist/**',
+            '!yarn-error.log',
+        ]),
+        zip(filename),
+        dest('dist/'),
+    ], handleError(done));
 }
 
-const hbsWatcher = () =>
-    watch(['*.hbs', 'partials/**/*.hbs', 'members/**/*.hbs'], hbs);
+const hbsWatcher = () => watch(['*.hbs', 'partials/**/*.hbs', 'members/**/*.hbs'], hbs);
 const cssWatcher = () => watch('assets/css/**/*.css', css);
 const jsWatcher = () => watch('assets/js/**/*.js', js);
 const watcher = parallel(hbsWatcher, cssWatcher, jsWatcher);

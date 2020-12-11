@@ -173,6 +173,13 @@ hr::after {
     left: 20px;
 }
 
+table:not(.highlight) {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 1.5rem;
+    word-break: normal;
+}
+
 table:not(.highlight):not(.table) {
     display: inline-block;
     overflow-x: auto;
@@ -180,12 +187,6 @@ table:not(.highlight):not(.table) {
     -webkit-overflow-scrolling: touch;
 }
 
-table:not(.highlight) {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 1.5rem;
-    word-break: normal;
-}
 
 table:not(.highlight) thead {
     border-bottom: 1px solid var(--light-gray-color);
